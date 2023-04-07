@@ -1,0 +1,1 @@
+type ChoreFun = (...args: any[]) => any
