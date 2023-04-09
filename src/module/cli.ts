@@ -1,6 +1,7 @@
 
 import {Command} from "commander"
 import {get_local_node_list} from "src/lib";
+import {use_node_version} from "src/module/use";
 
 
 export interface ProgramOption {
@@ -38,13 +39,7 @@ class CliOrder {
     }
 
     private async use(version: any, option: any) {
-
-
-        const version_list = get_local_node_list()
-
-        const is_local_have = version_list.some(v => v.startsWith(version))
-
-        // if (is_local_have === false) await
+        use_node_version(version)
     }
 
 

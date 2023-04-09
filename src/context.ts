@@ -19,8 +19,7 @@ class Context extends BroadcastPlus {
         super()
 
         this.$_ = {
-            https: true,
-            // https: source.startsWith("https:"),
+            https: source.startsWith("https:"),
             proxy: process.env.https_proxy || process.env.HTTPS_PROXY || process.env.http_proxy || process.env.HTTP_PROXY || ""
         }
     }

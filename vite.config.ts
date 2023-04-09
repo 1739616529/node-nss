@@ -1,7 +1,7 @@
 import { UserConfigFn, UserConfig } from "vite";
 import { join } from "node:path";
 import { builtinModules } from "module";
-import { dependencies } from "./package.json"
+import { readJsonSync } from "fs-extra"
 export default <UserConfigFn>function ({mode}) {
 
     const config: UserConfig = {
@@ -22,7 +22,7 @@ export default <UserConfigFn>function ({mode}) {
                 fileName: "index",
             },
             rollupOptions: {
-                external: [ ...builtinModules, ...Object.keys(dependencies) ],
+                external: [ ...builtinModules, ...Object.keys(readJsonSync(join(__dirname, "./package.json")).dependencies || {}) ],
             },
 
         }
